@@ -1,9 +1,9 @@
 {
     "id": "DA02028B",
-    "path": "~/xdmcomms-website/_quarto.yml",
+    "path": "~/shinylive/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "1872625019",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1737916997152.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "3,22",
+        "cursorPosition": "17,51",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1737964279,
+    "lastKnownWriteTime": 1738262751,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1737964279956,
+    "last_content_update": 1738262751847,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -1,5 +1,82 @@
 [
   {
+    "objectID": "tab-interactive/interactive-index.html",
+    "href": "tab-interactive/interactive-index.html",
+    "title": "Interactive Data Analysis",
+    "section": "",
+    "text": "This page demonstrates the integration of static content with interactive Shinylive components in a Quarto website."
+  },
+  {
+    "objectID": "tab-interactive/interactive-index.html#introduction",
+    "href": "tab-interactive/interactive-index.html#introduction",
+    "title": "Interactive Data Analysis",
+    "section": "",
+    "text": "This page demonstrates the integration of static content with interactive Shinylive components in a Quarto website."
+  },
+  {
+    "objectID": "tab-interactive/interactive-index.html#methods",
+    "href": "tab-interactive/interactive-index.html#methods",
+    "title": "Interactive Data Analysis",
+    "section": "Methods",
+    "text": "Methods\nWe analyze the mtcars dataset using both static visualizations and interactive components.\n\nStatic Analysis\nHere’s a static table of the first few rows of our dataset:\n\nhead(mtcars)\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\nAnd a static plot:\n\nlibrary(ggplot2)\n\nggplot(mtcars, aes(wt, mpg)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  theme_minimal() +\n  labs(x = \"Weight (1000 lbs)\", y = \"Miles per Gallon\")\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\nRelationship between MPG and Weight"
+  },
+  {
+    "objectID": "tab-interactive/interactive-index.html#interactive-analysis",
+    "href": "tab-interactive/interactive-index.html#interactive-analysis",
+    "title": "Interactive Data Analysis",
+    "section": "Interactive Analysis",
+    "text": "Interactive Analysis\nBelow is an interactive component that allows users to explore the relationships between different variables:\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 500\n#| components: [viewer]\n\nlibrary(shiny)\nlibrary(ggplot2)\n\nui &lt;- fluidPage(\n  titlePanel(\"MTCars Explorer\"),\n  sidebarLayout(\n    sidebarPanel(\n      selectInput(\"x\", \"X Variable:\",\n                  choices = names(mtcars),\n                  selected = \"wt\"),\n      selectInput(\"y\", \"Y Variable:\",\n                  choices = names(mtcars),\n                  selected = \"mpg\")\n    ),\n    mainPanel(\n      plotOutput(\"scatter\")\n    )\n  )\n)\n\nserver &lt;- function(input, output) {\n  output$scatter &lt;- renderPlot({\n    ggplot(mtcars, aes_string(x = input$x, y = input$y)) +\n      geom_point() +\n      geom_smooth(method = \"lm\") +\n      theme_minimal()\n  })\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "tab-interactive/interactive-index.html#results",
+    "href": "tab-interactive/interactive-index.html#results",
+    "title": "Interactive Data Analysis",
+    "section": "Results",
+    "text": "Results\nThe interactive component above allows users to explore relationships between different variables in the mtcars dataset."
+  },
+  {
+    "objectID": "tab-presentation/presentation-index.html",
+    "href": "tab-presentation/presentation-index.html",
+    "title": "Examples of presentations",
+    "section": "",
+    "text": "Here we can add links to presentations.\nFor now you can access the presentation by adjusting the URL below with your details\nhttps://YOUR-GITHUB-ACCOUNT.github.io/NAME-OF-YOUR-GIT-REPO/tab-presentation/presentation1/presentation-example.html\nSimply change my capitalized text for your: i) your github username\nii) the name of your github repo then copy the URL and paste it to visit the webpage.\nThe adjusted URL above should take you to an example of a simple Quarto presentation."
+  },
+  {
+    "objectID": "tab-one/tab-one-index.html",
+    "href": "tab-one/tab-one-index.html",
+    "title": "Add a title to your Tab index page",
+    "section": "",
+    "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+  },
+  {
+    "objectID": "tab-one/tab-one-index.html#nemo-enim-ipsam",
+    "href": "tab-one/tab-one-index.html#nemo-enim-ipsam",
+    "title": "Add a title to your Tab index page",
+    "section": "",
+    "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+  },
+  {
+    "objectID": "tab-one/tab-one-index.html#add-an-image",
+    "href": "tab-one/tab-one-index.html#add-an-image",
+    "title": "Add a title to your Tab index page",
+    "section": "Add an image",
+    "text": "Add an image\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Add a title",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+  },
+  {
+    "objectID": "index.html#nemo-enim-ipsam",
+    "href": "index.html#nemo-enim-ipsam",
+    "title": "Add a title",
+    "section": "Nemo enim ipsam",
+    "text": "Nemo enim ipsam\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+  },
+  {
     "objectID": "tab-presentation/presentation1/presentation-example.html#what-this-course-is-about",
     "href": "tab-presentation/presentation1/presentation-example.html#what-this-course-is-about",
     "title": "Course overview",
@@ -68,47 +145,5 @@
     "title": "Course overview",
     "section": "Summary",
     "text": "Summary\n\nDashboards are powerful tools for decision-making.\nEffective dashboards balance clarity, relevance, and visual appeal.\nAvoid common pitfalls by focusing on user needs and testing designs."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Add a title",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-  },
-  {
-    "objectID": "index.html#nemo-enim-ipsam",
-    "href": "index.html#nemo-enim-ipsam",
-    "title": "Add a title",
-    "section": "Nemo enim ipsam",
-    "text": "Nemo enim ipsam\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "objectID": "tab-one/tab-one-index.html",
-    "href": "tab-one/tab-one-index.html",
-    "title": "Add a title to your Tab index page",
-    "section": "",
-    "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "objectID": "tab-one/tab-one-index.html#nemo-enim-ipsam",
-    "href": "tab-one/tab-one-index.html#nemo-enim-ipsam",
-    "title": "Add a title to your Tab index page",
-    "section": "",
-    "text": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "objectID": "tab-one/tab-one-index.html#add-an-image",
-    "href": "tab-one/tab-one-index.html#add-an-image",
-    "title": "Add a title to your Tab index page",
-    "section": "Add an image",
-    "text": "Add an image\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-  },
-  {
-    "objectID": "tab-presentation/presentation-index.html",
-    "href": "tab-presentation/presentation-index.html",
-    "title": "Examples of presentations",
-    "section": "",
-    "text": "Here we can add links to presentations.\nFor now you can access the presentation by adjusting the URL below with your details\nhttps://YOUR-GITHUB-ACCOUNT.github.io/NAME-OF-YOUR-GIT-REPO/tab-presentation/presentation1/presentation-example.html\nSimply change my capitalized text for your: i) your github username\nii) the name of your github repo then copy the URL and paste it to visit the webpage.\nThe adjusted URL above should take you to an example of a simple Quarto presentation."
   }
 ]

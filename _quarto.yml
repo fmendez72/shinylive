@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
   execute-dir: project
-  
+
 website:
   title: "Website Template"
   navbar:
@@ -15,6 +15,8 @@ website:
         text: Presentations        
       - href: tab-iframe/iframe-index.qmd
         text: iFrame example
+      - href: tab-interactive/interactive-index.qmd
+        text: Interactive Analysis
     logo: images/logo_tepak.png
 
 format:
@@ -25,3 +27,5 @@ format:
     css: styles.css
     toc: true
 
+extensions:
+  - shinylive

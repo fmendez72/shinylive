@@ -1,0 +1,82 @@
+---
+title: "Interactive Data Analysis"
+format: html
+filters:
+  - shinylive
+---
+
+## Introduction
+
+This page demonstrates the integration of static content with interactive Shinylive components in a Quarto website.
+
+## Methods
+
+We analyze the mtcars dataset using both static visualizations and interactive components.
+
+### Static Analysis
+
+Here's a static table of the first few rows of our dataset:
+
+```{r}
+#| label: static-table
+head(mtcars)
+```
+
+And a static plot:
+
+```{r}
+#| label: static-plot
+#| fig-cap: "Relationship between MPG and Weight"
+library(ggplot2)
+
+ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal() +
+  labs(x = "Weight (1000 lbs)", y = "Miles per Gallon")
+```
+
+## Interactive Analysis
+
+Below is an interactive component that allows users to explore the relationships between different variables:
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 500
+#| components: [viewer]
+
+library(shiny)
+library(ggplot2)
+
+ui <- fluidPage(
+  titlePanel("MTCars Explorer"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("x", "X Variable:",
+                  choices = names(mtcars),
+                  selected = "wt"),
+      selectInput("y", "Y Variable:",
+                  choices = names(mtcars),
+                  selected = "mpg")
+    ),
+    mainPanel(
+      plotOutput("scatter")
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$scatter <- renderPlot({
+    ggplot(mtcars, aes_string(x = input$x, y = input$y)) +
+      geom_point() +
+      geom_smooth(method = "lm") +
+      theme_minimal()
+  })
+}
+
+shinyApp(ui, server)
+```
+
+## Results
+
+The interactive component above allows users to explore relationships between different variables in the mtcars dataset.
