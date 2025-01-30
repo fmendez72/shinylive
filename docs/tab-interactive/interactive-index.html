@@ -257,7 +257,9 @@ library(shiny)
 library(ggplot2)
 
 ui &lt;- fluidPage(
-  titlePanel("MTCars Explorer"),
+    div(id = "loading-content",
+        h2("Loading Shiny app..."),
+        "This may take 15-20 seconds to initialize."),
   sidebarLayout(
     sidebarPanel(
       selectInput("x", "X Variable:",
