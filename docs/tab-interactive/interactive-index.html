@@ -257,22 +257,47 @@ library(shiny)
 library(ggplot2)
 
 ui &lt;- fluidPage(
+    tags$head(
+        tags$style(HTML("
+            #loading-content {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                z-index: 1000;
+            }
+            #main-content {
+                display: none;
+            }
+        "))
+    ),
     div(id = "loading-content",
         h2("Loading app..."),
         "This may take up to 10 seconds to initialize."),
-  sidebarLayout(
-    sidebarPanel(
-      selectInput("x", "X Variable:",
-                  choices = names(mtcars),
-                  selected = "wt"),
-      selectInput("y", "Y Variable:",
-                  choices = names(mtcars),
-                  selected = "mpg")
+    div(id = "main-content",
+        sidebarLayout(
+            sidebarPanel(
+                selectInput("x", "X Variable:",
+                        choices = names(mtcars),
+                        selected = "wt"),
+                selectInput("y", "Y Variable:",
+                        choices = names(mtcars),
+                        selected = "mpg")
+            ),
+            mainPanel(
+                plotOutput("scatter")
+            )
+        )
     ),
-    mainPanel(
-      plotOutput("scatter")
-    )
-  )
+    tags$script("
+        $(document).ready(function() {
+            setTimeout(function() {
+                $('#loading-content').hide();
+                $('#main-content').fadeIn('slow');
+            }, 2000);
+        });
+    ")
 )
 
 server &lt;- function(input, output) {
