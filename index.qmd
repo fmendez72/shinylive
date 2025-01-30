@@ -2,6 +2,14 @@
 title: "Add a title"
 ---
 
+```{shinylive-r}
+#| context: setup
+#| include: false
+library(shiny)
+library(ggplot2)
+```
+
+
 This is a Quarto website.
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.

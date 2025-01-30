@@ -258,8 +258,8 @@ library(ggplot2)
 
 ui &lt;- fluidPage(
     div(id = "loading-content",
-        h2("Loading Shiny app..."),
-        "This may take 15-20 seconds to initialize."),
+        h2("Loading app..."),
+        "This may take up to 10 seconds to initialize."),
   sidebarLayout(
     sidebarPanel(
       selectInput("x", "X Variable:",
